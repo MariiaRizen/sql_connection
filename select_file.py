@@ -6,5 +6,10 @@ res = cur.execute("""SELECT contacts.type, contacts.value, employees.position
             LEFT JOIN employees ON persons.id=employees.id
             LEFT JOIN contacts ON persons.id=contacts.id
 """)
-print(res)
-#SELECT employees.position, contacts.type, contacts.value ... WHERE emplyees.id={id})
+
+res2 = cur.execute("""SELECT employees.position, contacts.type, contacts.value
+            FROM persons
+            LEFT JOIN employees ON persons.id=employees.id
+            LEFT JOIN contacts ON persons.id=contacts.id
+            WHERE employees.id={id}
+""")
